@@ -17,9 +17,9 @@ class TestDict:
 
     @pytest.mark.parametrize("d", [{"a": 1}, {-2: "asd"}])
     def test_update(self, d, get_dict):
-        l1 = len(get_dict)
         get_dict.update(d)
-        assert len(get_dict) != l1
+        for i in d:
+            assert i in get_dict
 
     def test_clear(self, get_dict):
         get_dict.clear()

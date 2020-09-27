@@ -9,7 +9,7 @@ class TestInt:
 
     def test_zero_division(self, get_int):
         with pytest.raises(ZeroDivisionError):
-            assert get_int / 0
+            get_int / 0
 
     @pytest.mark.parametrize('a,b', [(3, 5), (7, 23), (2, 13)])
     def test_product_greater_than_squares_sum(self, a, b):

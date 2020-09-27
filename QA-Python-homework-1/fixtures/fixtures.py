@@ -1,52 +1,41 @@
 import pytest
 import random
 import string
+from tools.helpers import random_int, random_string
 
 
 @pytest.fixture()
 def get_int():
-    yield random.randint(1, 100)
+    yield random_int(1, 100)
 
 
 @pytest.fixture()
 def get_string():
-    yield "".join(random.choices(string.ascii_letters,
-                                 k=random.randint(1, 26)))
+    yield random_string()
 
 
 @pytest.fixture()
 def get_list():
-    yield [random.randint(1, 100),
-           "".join(random.choices(string.ascii_letters,
-                                  k=random.randint(1, 26))),
-           random.randint(1, 100)]
+    yield [random_int(1, 100),
+           random_string(),
+           random_int(1, 100)]
 
 
 @pytest.fixture()
 def get_set():
-    yield {random.randint(1, 100),
-           "".join(random.choices(string.ascii_letters,
-                                  k=random.randint(1, 26))),
-           random.randint(120, 1000),
-           "".join(random.choices(string.ascii_letters,
-                                  k=random.randint(1, 26)))
+    yield {random_int(1, 100),
+           random_string(),
+           random_int(120, 1000),
+           random_string()
            }
 
 
 @pytest.fixture("class")
 def get_dict():
-    count = random.randint(1, 26)
-    s = random.choices(string.ascii_letters, k=count)
-    random.shuffle(s)
     yield {
-        random.randint(1, 100): "".join(
-            random.choices(string.ascii_letters,
-                           k=random.randint(1, 26))),
-        "".join(random.choices(string.ascii_letters,
-                               k=random.randint(1, 26))): random.randint(1,
-                                                                         100),
-        "".join(random.choices(string.ascii_letters,
-                               k=random.randint(1, 26))): [
-            random.randint(1, 100),
-            s[:random.randint(1, count)]]
+        random_int(1, 100): random_string(),
+        random_string(): random_int(1, 100),
+        random_string(): [
+            random_int(1, 100),
+            random_string()]
     }
