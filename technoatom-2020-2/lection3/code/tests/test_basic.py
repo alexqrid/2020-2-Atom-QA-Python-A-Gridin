@@ -1,5 +1,6 @@
 import allure
 import pytest
+from allure_commons.types import AttachmentType
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
@@ -73,3 +74,34 @@ class Test(BaseCase):
         self.base_page.click((By.XPATH, '//*[contains(text(), "Windows x86-64 web-based installer")]'))
 
         self.wait_download('python-3.8.2-amd64-webinstall.exe')
+
+    def test_take_screenshot(self):
+        """ Ненастоящий тест, показывает, как в отчет с аллюром можно положить скриншот """
+
+        with allure.step('Go to europython page'):
+            self.main_page.go_to_europython_events()
+
+        with allure.step('Attach screenshot'):
+            allure.attach(name='Europython', body=self.driver.get_screenshot_as_png(),
+                          attachment_type=AttachmentType.PNG)
+
+    def test_screenshot_on_fail(self):
+        """ ненастоящий тест, делаем скриншот при неудачной загрузке страницы"""
+        with allure.step('Open bad url'):
+            try:
+                self.driver.get("asdasdasd")
+            except Exception:
+                allure.attach(name='Europython', body=self.driver.get_screenshot_as_png(),
+                              attachment_type=AttachmentType.PNG)
+
+    def test_iframe(self):
+        command = 'assert 1 / 0'
+        expected_msg = 'ZeroDivisionError'
+        locator = (By.XPATH, self.main_page.locators.TERMINAL_RESULT.format(expected_msg))
+
+        self.main_page.iframe_run_command(command)
+        assert self.main_page.find(locator)
+        self.driver.switch_to.default_content()
+
+        import time
+        time.sleep(5)

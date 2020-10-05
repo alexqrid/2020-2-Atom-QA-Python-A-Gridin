@@ -13,6 +13,15 @@ class MainPageLocators(BasePageLocators):
     INTRODUCTION = (By.CLASS_NAME, 'introduction')
     LEARN_MORE = (By.CLASS_NAME, 'readmore')
 
+    # IFRAME
+    START_SHELL = (By.ID, 'start-shell')
+    MAIN_FRAME = (By.XPATH, '//iframe')
+    CONSOLE = (By.ID, 'id_console')
+    TERMINAL = (By.XPATH, '//iframe')
+    TERMINAL_READY = (By.XPATH, '//x-row[contains(text(), ">>> ")]')
+    TERMINAL_BODY = (By.XPATH, '//body')
+    TERMINAL_RESULT = '//x-row[contains(text(), "{}")]'
+
 
 class SearchPageLocators(BasePageLocators):
     NO_RESULTS = (By.XPATH, '//p[contains(text(), "No results found.")]')
