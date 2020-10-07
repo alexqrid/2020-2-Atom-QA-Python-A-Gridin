@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+install:
+  - pip install -r requirements.txt
+script:
+  - pytest QA-Python-homework-1/
+  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-1/
+  - flake8 --ignore=F403,F401 QA-Python-homework-1/
+  - pycodestyle QA-Python-homework-1/
+
+
+
+
