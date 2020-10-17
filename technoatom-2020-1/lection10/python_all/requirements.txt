@@ -1,0 +1,8 @@
+pytest
+flask
+requests
+allure-pytest
+pytest-xdist
+pymysql
+sqlalchemy
+faker

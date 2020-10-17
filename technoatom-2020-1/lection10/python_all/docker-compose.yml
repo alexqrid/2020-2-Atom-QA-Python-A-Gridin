@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  percona_database:
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    image: "percona:latest"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"-uroot", "-ppass", "ping", "-h", "127.0.0.1"]
+      timeout: 20s
+      retries: 10
+
+
+
+  tests:
+    build: .
+    volumes:
+      - ~/PycharmProjects/qa-python/lection10/python_all/code_lection7:/code
+      - /tmp/res_allure:/allure
+    depends_on:
+      percona_database:
+         condition: service_healthy
