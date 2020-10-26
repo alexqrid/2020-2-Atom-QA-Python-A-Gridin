@@ -3,7 +3,7 @@ import uuid
 
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 
 from ui.pages.audience import AudiencePage
 from ui.pages.campaign import CampaignPage
@@ -65,7 +65,7 @@ def unique():
 @pytest.fixture(scope='function')
 def driver(config):
     browser = config['browser']
-    version = config['version']
+    # version = config['version']
     url = config['url']
     download_dir = config['download_dir']
     selenoid = config['selenoid']
@@ -98,9 +98,10 @@ def driver(config):
                 options.add_argument('--headless')
             prefs = {"download.default_directory": download_dir}
             options.add_experimental_option('prefs', prefs)
-
-            manager = ChromeDriverManager(version=version)
-            driver = webdriver.Chrome(executable_path=manager.install(),
+            # commented for travis build
+            # manager = ChromeDriverManager(version=version)
+            driver = webdriver.Chrome(executable_path="/tmp/chromedriver",
+                                      # manager.install(),
                                       options=options,
                                       desired_capabilities={
                                           'acceptInsecureCerts': True}
