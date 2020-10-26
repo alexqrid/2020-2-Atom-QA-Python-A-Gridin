@@ -1,4 +1,3 @@
-sudo: required
 services:
   - xvfb
 addons:
@@ -20,8 +19,6 @@ before_script:
   - wget https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d /tmp/
   - export CHROME_BIN=chromium-browser
-  - xvfb-run make test
-  - xvfb-run --server-args="-screen 0 1024x768x24" make test
 script:
   - pytest -m 'UI' QA-Python-homework-2/
   - pylint --confidence INFERENCE_FAILURE QA-Python-homework-2/
