@@ -88,6 +88,12 @@ def driver(config):
                                       )
         else:
             options.add_argument("--window-size=800,600")
+            options.add_argument(
+                "--no-sandbox")  # This make Chromium reachable
+            options.add_argument(
+                "--no-default-browser-check")  # Overrides default choices
+            options.add_argument("--no-first-run")
+            options.add_argument("--disable-default-apps")
             if headless:
                 options.add_argument('--headless')
             prefs = {"download.default_directory": download_dir}
