@@ -6,7 +6,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-RETRY_COUNT = 15
+RETRY_COUNT = 50
 
 
 class MainPageLocators:

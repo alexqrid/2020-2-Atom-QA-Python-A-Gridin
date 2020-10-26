@@ -70,6 +70,7 @@ def driver(config):
     download_dir = config['download_dir']
     selenoid = config['selenoid']
     headless = config['headless']
+
     if browser == 'chrome':
         options = ChromeOptions()
         if selenoid:
@@ -87,7 +88,8 @@ def driver(config):
                                       desired_capabilities=capabilities
                                       )
         else:
-            options.add_argument("--window-size=1024,768")
+            # options.add_argument("--window-size=1366,768")
+            options.add_argument("--start-maximized")
             options.add_argument(
                 "--no-sandbox")  # This make Chromium reachable
             options.add_argument(
@@ -108,8 +110,7 @@ def driver(config):
                                       )
     else:
         raise UnsupportedBrowserException(f'Unsupported browser: "{browser}"')
-
-    driver.maximize_window()
+    driver.set_window_size(1366, 768)
     driver.get(url)
     yield driver
 

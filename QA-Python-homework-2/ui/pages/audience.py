@@ -1,4 +1,5 @@
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from ui.pages.main import MainPage
@@ -54,12 +55,16 @@ class AudiencePage(MainPage):
     def delete_audience(self, title="Delete Segment"):
         name = title
         self.create_audience(title=name)
-        locator = f'//a[@title="{name}"]/../..' \
-                  '/following-sibling::*/' \
-                  'following-sibling::*/' \
-                  'following-sibling::*/span[contains(@class,"remove")]'
+        id_locator = f'//a[@title="{name}"]'
+        element = self.find((By.XPATH, id_locator))
+        id_value = element.get_attribute('href').split("/")[-1]
 
-        self.click((By.XPATH, locator), timeout=20)
+        delete_button_locator = (By.XPATH,
+                                 '//div[contains(@data-test,'
+                                 f'"remove-{id_value}")]/span')
+        element = self.find(delete_button_locator)
+        ac = ActionChains(self.driver)
+        ac.move_to_element(element).click().perform()
+
         self.click(self.locators.SEGMENT_REMOVE_APPROVE_BUTTON_LOCATOR)
-
         return True

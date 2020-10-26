@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 from ui.pages.main import MainPage
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CampaignPageLocators:
@@ -50,8 +51,8 @@ class CampaignPage(MainPage):
 
         self.click(self.locators.CAMPAIGN_PURPOSE_LOCATOR)
         self.find(self.locators.CAMPAIGN_URL_LOCATOR).send_keys(url)
-        self.click(self.locators.CAMPAIGN_NAME_LOCATOR)
-        self.find(self.locators.CAMPAIGN_NAME_LOCATOR).send_keys(title_name)
+        self.find(self.locators.CAMPAIGN_NAME_LOCATOR,
+                  wait_for=EC.element_to_be_clickable).send_keys(title_name)
         # после этого открывается полная форма создания и там тоже есть
         # поле "Название кампании"
         # лень было хардкодить 2 xpath-а для обоих полей названия кампании
