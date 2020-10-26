@@ -87,7 +87,7 @@ def driver(config):
                                       desired_capabilities=capabilities
                                       )
         else:
-            options.add_argument("--window-size=800,600")
+            options.add_argument("--window-size=1024,768")
             options.add_argument(
                 "--no-sandbox")  # This make Chromium reachable
             options.add_argument(
