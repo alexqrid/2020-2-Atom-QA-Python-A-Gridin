@@ -19,10 +19,11 @@ before_script:
   - unzip chromedriver_linux64.zip -d /tmp/
   - export CHROME_BIN=chromium-browser
 script:
-  - pytest -m 'UI' QA-Python-homework-2/ --headless true
-  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-2/
-  - flake8 --ignore=F403,F405 QA-Python-homework-2/
-  - pycodestyle QA-Python-homework-2/
+  - pytest QA-Python-homework-1
+  - pytest -m 'UI' QA-Python-homework-2 --headless true
+  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-2 QA-Python-homework-1
+  - flake8 --ignore=F401,F403,F405 QA-Python-homework-2 QA-Python-homework-1
+  - pycodestyle QA-Python-homework-2 QA-Python-homework-1
 
 
 
