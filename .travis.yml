@@ -21,9 +21,10 @@ before_script:
 script:
   - pytest QA-Python-homework-1
   - pytest -m 'UI' QA-Python-homework-2 --headless true
-  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-2 QA-Python-homework-1
-  - flake8 --ignore=F401,F403,F405 QA-Python-homework-2 QA-Python-homework-1
-  - pycodestyle QA-Python-homework-2 QA-Python-homework-1
+  - pytest -m 'API' QA-Python-homework-3
+  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-*
+  - flake8 --ignore=F401,F403,F405 QA-Python-homework-*
+  - pycodestyle QA-Python-homework-*
 
 
 
