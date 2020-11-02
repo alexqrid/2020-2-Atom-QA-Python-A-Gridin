@@ -19,15 +19,15 @@ do
   if [[ -f $i ]]
   then
     echo -e "Started to process $i ..."
-    output="/tmp/processed_$i.txt"
-    echo -e "\nResult of processing $i\n">$output
+    output="${PWD}/processed_$i.txt"
+    echo -e "Result of processing $i\n">$output
     # Общее количество запросов
-    echo -e "Total query amount: ">>$output
+    echo -e "Total queries amount: ">>$output
     grep -E "^\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" $i|wc -l  >> $output
 
     # кол-во GET,POST
     echo -e "\nStatistics on GET/POST methods: ">>$output
-    grep -oE "GET|POST" $i |sort|uniq -c >>$output
+    grep -oE "GET |POST " $i |sort|uniq -c >>$output
 
     # Топ 10 самых больших по размеру запросов, должно быть видно url, код, число запросов
     echo -e "\nTop 10 queries by size: \n\t\t">>$output
@@ -40,7 +40,7 @@ do
 
     # Топ 10 запросов серверных ошибок по размеру запроса, должно быть видно url, статус код, ip адрес
     echo -e "\nTop 10 failed queries by size: ">>$output
-    grep -E ".*\" \b(4[[:digit:]]{2})\b .+" $i |sort -t " " -rnk10| awk '{print $1" " $7 " " $9}'|uniq -u|head >>$output
+    grep -E ".*\" 5[[:digit:]]{2} .+" $i |sort -t " " -rnk10| awk '{print $1" " $7 " " $9 " " $10}'|uniq -u|head >>$output
     echo -e "Processed $i and put results in $output";
   else
     echo -e "It looks like $i is not a text log file"

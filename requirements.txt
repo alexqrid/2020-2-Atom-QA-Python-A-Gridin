@@ -1,3 +1,5 @@
+allure-pytest==2.8.19
+allure-python-commons==2.8.19
 apipkg==1.5
 astroid==2.4.2
 attrs==20.2.0
