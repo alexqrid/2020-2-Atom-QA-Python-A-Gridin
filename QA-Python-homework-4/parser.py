@@ -1,7 +1,7 @@
 import os
 import sys
 import sqlite3
-
+import json
 
 def parse_log(filename):
     print(f"Started to parse {filename}")
@@ -65,6 +65,8 @@ def parse_log(filename):
                         limit 10;""")
     result["top_5xx"] = "\n".join([f"{i[0]} {i[1]} {i[2]} {i[3]}"
                                    for i in cursor.fetchall()])
+    with open(os.path.join(os.getcwd(),filename[:-4]+".json"), 'w') as fd:
+        json.dump(result, fd, indent=4)
 
     with open(os.path.join(os.getcwd(), output), 'w') as fd:
         fd.write(f"Result of processing {filename}\n")
