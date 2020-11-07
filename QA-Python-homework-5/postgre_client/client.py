@@ -2,6 +2,7 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extras import execute_batch
 
+
 class PostgresqlConnection(object):
 
     def __init__(self, user, password, db_name):
@@ -35,4 +36,4 @@ class PostgresqlConnection(object):
         return self.get_connection(db_created=True)
 
     def insert_many(self, query, data):
-        execute_batch(self.cursor,query, data,page_size=5000)
+        execute_batch(self.cursor, query, data, page_size=5000)
