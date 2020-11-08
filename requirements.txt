@@ -6,3 +6,5 @@ faker
 webdriver-manager
 allure-pytest
 requests
+locust
+Flask-HTTPAuth

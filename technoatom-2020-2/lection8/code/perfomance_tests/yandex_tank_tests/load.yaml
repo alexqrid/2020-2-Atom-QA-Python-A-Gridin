@@ -1,0 +1,21 @@
+overload:
+  enabled: true
+  token_file: /var/loadtest/token.txt
+  package: yandextank.plugins.DataUploader
+  job_name: test_qa_yar
+  job_dsc: test_qa_yar_description
+phantom:
+  address: 192.168.1.144:5555
+  ammofile: /var/loadtest/ammo.txt
+  load_profile:
+    load_type: rps
+    schedule: step(5, 25, 5, 20)
+console:
+  enabled: false
+telegraf:
+  enabled: false
+  package: yandextank.plugins.Telegraf
+  config: /var/loadtest/monitoring.xml
+
+
+

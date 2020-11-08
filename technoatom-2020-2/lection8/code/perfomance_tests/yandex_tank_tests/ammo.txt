@@ -1,0 +1,13 @@
+[Connection: close]
+[Host: target.example.com]
+/shareware
+
+[Connection: close]
+[Host: target.example.com]
+[Authorization: Basic eWFyOjMzMw==]
+/profile
+
+
+[Connection: close]
+[Host: target.example.com]
+/profile
