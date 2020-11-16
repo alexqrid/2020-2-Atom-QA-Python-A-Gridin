@@ -1,4 +1,5 @@
 import pytest
+import numpy
 
 from mysql_client.mysql_client import MysqlConnection
 from mysql_orm_client.mysql_orm_client import MysqlOrmConnection

@@ -1,0 +1,26 @@
+version: '2.1'
+
+networks:
+  default:
+    name: test
+
+services:
+  percona:
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    image: "percona:latest"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-ppass", "ping", "-h", "127.0.0.1"]
+      timeout: 30s
+      retries: 10
+
+  tests:
+    build: ~/PycharmProjects/technoatom-qa-python/technoatom-2020-2/lection9/python_example/
+    volumes:
+      - ~/PycharmProjects/technoatom-qa-python/technoatom-2020-2/lection6/code:/code
+      - /tmp/allure_results:/allure
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      percona:
+        condition: service_healthy
