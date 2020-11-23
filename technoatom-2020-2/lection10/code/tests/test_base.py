@@ -11,7 +11,7 @@ def test_positive():
 
 
 def test2_positive():
-    assert 3 * 4 == 13
+    assert 3 * 4 == 12
 
 
 def test3_positive():
