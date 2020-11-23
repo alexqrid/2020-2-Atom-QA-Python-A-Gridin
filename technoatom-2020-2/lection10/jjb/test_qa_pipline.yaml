@@ -1,0 +1,21 @@
+- job:
+    name: test-qa-pipeline
+    description: "JJB Project, Pipeline\n"
+    project-type: pipeline
+
+    pipeline-scm:
+      scm:
+        - git:
+            url: git@github.com:SK1995/test-project.git
+            credentials-id: fec0c07f-edca-47e6-94a2-339e6df5443e
+      script-path: "technoatom-2020-2/lection10/jenkins_files/simple-pipline.groovy"
+
+    wrappers:
+      - timestamps
+      - workspace-cleanup
+
+    triggers:
+      - pollscm:
+          cron: '* * * * *'
+
+
