@@ -12,9 +12,9 @@ env:
 
 script:
   - pytest QA-Python-homework-6
-  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-5
-  - flake8 --ignore=F401,F403,F405 QA-Python-homework-5
-  - pycodestyle QA-Python-homework-5
+  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-6
+  - flake8 --ignore=F401,F403,F405 QA-Python-homework-6
+  - pycodestyle QA-Python-homework-6
 
 
 
