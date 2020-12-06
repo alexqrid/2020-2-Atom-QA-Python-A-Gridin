@@ -9,14 +9,12 @@ env:
   global:
     - secure: "bTito224maY2FAKs+kjaCjgl+hPqp927EydFpiEKbw0567TdY2g7oQhZ7jC8qdXyLM1bGnrZzbMnj8bcWyptTTmUetq8T/id6evwpplDbdMBcEc2zX0X+U/LNvs3i2tkPh76sUwH23itKvLwO9bYzgHxSgIh2HEGPsAeXANEU/UNpNn59yx5u0z7OUPBDe37HgwQQmrEZu0i2jzQEQWf3ZCQmoIRH+8OQQBWu7vfnY4rIZHIFa+NzygKvgdyK07+6GRpEeYbwfhIiXSPBkFHAQ3qoebs2B/ocBjrBSlOJkTG4xJFcXmBzGjUD2UYDS3+IW4bNEGanTRxQnzPAV8Koyma4j6f5T0vzYK6L6LoIZOkFLp6gKhb9N9M6JHlrf3aRQcPd8kanErRp6a1tBkld4GaDSju5hd0Yperi//DxSzIF3NaMJpfD9wJJflmxyExX9a5wh5msaKrH8//hbyyePr8wL9LL5u2tjkmyAHhkNnzZ2wRJSmYhmI+76jHF2TIF9kRjDG2Ezv2gj388qijeFffPpzAAxyr2psnxqBdwf1FAmhaG3EArYPkwyFTGf/Go0NKnxrlG9zCJC8EDa77ai2gW8Qmeak0qawLCghNDde6DVCh6FkwXDl2zDViR50qvcKEgfQdjtp7KP/6nUy6LuN+nfhCQur5MkBm9Y9upxk="
     - secure: "X1NlOXGmc8sUX8N2/Qir1jPYEXjT1yJgUuwQ4oupL0/goT9WXtcbuUiv0caLmsI3JFoY4qwsRIixf2wYKe7EOrJjUp1ADLVl8FQUHRP32MeUoC2k+ED3m+ZoIF7AOlPeVeUiPTWyu1BeSfv3/yKXQ54vCjCp5HjNC1wYfF+vbEzeSqiI1R+5imCvZwwBpzOglwTjrwfK+AugRDJePjqRWZ+AMr6vNjgs6LFs44i7kpZW9a7AfjwXU0akUQS3tlXtJxuNcP+m3iQJqCoDNhWWM5rVbef7OuWv+TfYDYwcrlUVwyz/nF7834fUD5SSAxVik1xHuRdggVuak8ikHmOZ7fWPXODchL9JXVRxvcmFJhhwAi+tX7z+3x7WpCEJ6KL/Eo0LRKgY1MLUpa9Y+Uj7w8A27k5m3zNYu5s4sM4ZyJqGIy3+5/QPDifkNuvjhYBuu9RVzaoG/Q5sbYSNAesDDv4A/tZI7MoqLJIqKhYhBZeUV0RrSsFe2/XR0b0EDc+c9kD5RUTMhxpBPfYtUBiUJNJyH8QaxLtFF6k9QxtS2cGJrcQIM9wIWjBlJximsMaLiFUK6oZEcoKEerhOUuSteSxsfR/+eGZor0NzySPNdtHvOsKXwq6mKUWDOZW6fhWASl1sNKanU7BTulRkCllKQNQsJQOUPWvDJhdAkQxgwAQ="
-before_script:
-  - psql -c "CREATE USER dummy SUPERUSER" -U postgres
-  - psql -c "ALTER USER dummy WITH PASSWORD '123'" -U postgres
+
 script:
-  - pytest QA-Python-homework-5
-  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-5
-  - flake8 --ignore=F401,F403,F405 QA-Python-homework-5
-  - pycodestyle QA-Python-homework-5
+  - pytest QA-Python-homework-6
+  - pylint --confidence INFERENCE_FAILURE QA-Python-homework-6
+  - flake8 --ignore=F401,F403,F405 QA-Python-homework-6
+  - pycodestyle QA-Python-homework-6
 
 
 
